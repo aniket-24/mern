@@ -3,8 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const dontenv = require("dotenv");
 
-const DB =
-  "mongodb+srv://Aniket:aniket24102001@cluster0.242hqmf.mongodb.net/mern?retryWrites=true&w=majority";
+const DB = process.env.DATABASE;
 
 mongoose
   .connect(DB, { useNewUrlParser: true })
