@@ -3,17 +3,10 @@ const app = express();
 const mongoose = require("mongoose");
 const dontenv = require("dotenv");
 
-const DB = process.env.DATABASE;
+dontenv.config({ path: "./config.env" });
 
-mongoose
-  .connect(DB, { useNewUrlParser: true })
-  .then(() => {
-    console.log("Connection secured!");
-  })
-  .catch((err) => {
-    console.log(err);
-    console.log("No connection");
-  });
+require("./db/conn");
+const PORT = process.env.PORT;
 
 const middleware = (req, res, next) => {
   console.log("middleware");
@@ -36,6 +29,6 @@ app.get("/signup", (req, res) => {
   res.send("Signup!");
 });
 
-app.listen(3000, () => {
-  console.log("Server is running...");
+app.listen(PORT, () => {
+  console.log(`Server is running at ${PORT}`);
 });
