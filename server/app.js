@@ -34,6 +34,11 @@ app.get("/signup", (req, res) => {
   res.send("Signup!");
 });
 
+app.get("/contact", (req, res) => {
+  res.cookie("test", "Aniket");
+  res.send("Contact!");
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running at ${PORT}`);
 });
